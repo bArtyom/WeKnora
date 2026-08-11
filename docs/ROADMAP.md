@@ -44,3 +44,21 @@
 - [ ] 完善官方文档（使用说明、API、部署等）
 - [ ] 鼓励用户贡献文档、博客、视频等，形成社区化文档体系
 - [ ] 在知乎平台建设 WeKnora 内容合集
+
+
+## Enterprise Text2SQL Agent（维护者主导方向）
+
+本方向基于 WeKnora 现有的 RAG、Agent、MCP、RBAC、可观测性和私有化部署能力，面向企业数据分析场景建设专用 Text2SQL Agent。专用能力在完成实现、测试和评估前保持未勾选。
+
+- [ ] 建立多数据库 Schema / Catalog 接入与增量快照
+- [ ] 建立表、列、字段注释、数据新鲜度、负责人和血缘的统一元数据模型
+- [ ] 支持业务术语、指标定义、同义词和口径版本管理
+- [ ] 实现跨库表发现、候选表排序与可解释检索证据
+- [ ] 实现实体—指标—维度—时间窗口的自然语言意图解析
+- [ ] 实现基于 Join Graph 的安全关联路径规划与歧义澄清
+- [ ] 实现 PostgreSQL / MySQL / ClickHouse / Doris 等方言适配与 SQL 编译
+- [ ] 实现 SQL AST 校验、Explain / Dry-run、自动修复与成本约束
+- [ ] 实现只读默认、行列级权限、敏感字段脱敏、超时和结果集限制
+- [ ] 输出选表、字段、指标定义、过滤条件、SQL 指纹和执行元数据
+- [ ] 建立 Text2SQL 基准集与指标：table recall、column recall、join accuracy、execution accuracy、安全违规率和证据覆盖率
+- [ ] 提供企业级审计、追踪、反馈闭环和离线回归评估
