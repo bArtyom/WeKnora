@@ -36,6 +36,8 @@
 | <b>English</b> | <a href="./README_CN.md"><b>简体中文</b></a> | <a href="./README_JA.md"><b>日本語</b></a> | <a href="./README_KO.md"><b>한국어</b></a> |
 </p>
 
+> **Maintainer-led Text2SQL edition.** This public repository is a derivative of [Tencent/WeKnora](https://github.com/Tencent/WeKnora). It preserves upstream attribution and the MIT license while focusing this edition on enterprise Text2SQL: schema discovery, table and column retrieval, business-metric grounding, safe SQL planning, governed execution, and auditable answers. Text2SQL-specific capabilities remain marked as roadmap until they are implemented and validated.
+
 <p align="center">
   <h4 align="center">
 
@@ -44,7 +46,7 @@
   </h4>
 </p>
 
-# 💡 WeKnora — Turn Documents into Living Knowledge with RAG, Agents and Auto-Wiki
+# 💡 WeKnora Text2SQL Agent Edition — Enterprise Data Discovery & Grounded SQL
 
 ## 📌 Overview
 
@@ -54,6 +56,22 @@ It is organized around three core capabilities: **RAG-based Quick Q&A** for ever
 
 The framework supports auto-syncing knowledge from Feishu, Notion, and Yuque (more data sources coming soon), handles 10+ document formats including PDF, Word, images, and Excel, and can serve Q&A directly through IM channels like WeCom, Feishu, Slack, and Telegram. It is compatible with major LLM providers including OpenAI, DeepSeek, Qwen (Alibaba Cloud), Zhipu, Hunyuan, Gemini, MiniMax, NVIDIA, and Ollama. Its fully modular design allows swapping LLMs, vector databases, and storage backends, with support for local and private cloud deployment ensuring complete data sovereignty. WeKnora also integrates with **Langfuse** for comprehensive observability into agent reasoning, token usage, and pipeline tracing.
 
+
+## 🎯 Enterprise Text2SQL Agent
+
+This maintainer edition turns WeKnora's existing RAG, agent, MCP, RBAC, observability, and self-hosting foundation toward a specialized enterprise Text2SQL workflow.
+
+The hard part of enterprise Text2SQL is rarely producing syntactically valid SQL. It is finding the right data across fragmented schemas, resolving business language to governed metrics, selecting trustworthy joins, respecting tenant and column policies, and making every answer explainable. The planned agent workflow therefore prioritizes:
+
+- **Catalog grounding** — ingest schemas, comments, tags, ownership, freshness, lineage, samples, and business glossary terms.
+- **Table and column discovery** — hybrid lexical/vector/graph retrieval with candidate ranking and evidence snippets.
+- **Semantic planning** — decompose the request into entities, metrics, filters, time windows, joins, and ambiguity checks before SQL generation.
+- **Dialect-aware SQL** — compile against explicit database dialects and versioned semantic definitions instead of relying on a single generic prompt.
+- **Validation and repair** — parse, lint, explain, dry-run, enforce limits, repair safe failures, and return the reasoning trace.
+- **Governed execution** — default to read-only access, apply RBAC/row-column policies, mask sensitive fields, and require approval for risky operations.
+- **Auditable answers** — show the selected tables, columns, metric definitions, filters, query fingerprint, execution metadata, and evidence used.
+
+The product blueprint, evaluation targets, and rollout plan are documented in [docs/TEXT2SQL_AGENT.md](./docs/TEXT2SQL_AGENT.md). The specialist capabilities above are intentionally presented as active development rather than shipped functionality.
 
 ## ✨ Latest Updates
 
@@ -199,7 +217,7 @@ AI agents (Claude Code, Cursor, Aider, …) can rely on.
 ### 📦 Installation & Launch
 
 ```bash
-git clone https://github.com/Tencent/WeKnora.git
+git clone https://github.com/bArtyom/WeKnora.git
 cd WeKnora
 cp .env.example .env   # Edit .env as needed, see comments in the file
 docker compose up -d   # Start core services
@@ -283,7 +301,7 @@ make dev-frontend
 
 ## 🤝 Contributing
 
-Welcome to submit [Issues](https://github.com/Tencent/WeKnora/issues) or Pull Requests.
+Welcome to submit [Issues](https://github.com/bArtyom/WeKnora/issues) or Pull Requests.
 
 **Process:** Fork → Create branch → Commit changes → Open PR
 
@@ -302,7 +320,7 @@ Welcome to submit [Issues](https://github.com/Tencent/WeKnora/issues) or Pull Re
 
 Thanks to these excellent contributors:
 
-[![Contributors](https://contrib.rocks/image?repo=Tencent/WeKnora)](https://github.com/Tencent/WeKnora/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=bArtyom/WeKnora)](https://github.com/bArtyom/WeKnora/graphs/contributors)
 
 ## 📄 License
 
@@ -311,7 +329,7 @@ You are free to use, modify, and distribute the code with proper attribution.
 
 ## 📈 Project Statistics
 
-<a href="https://www.star-history.com/#Tencent/WeKnora&type=date&legend=top-left">
+<a href="https://www.star-history.com/#bArtyom/WeKnora&type=date&legend=top-left">
  <picture>
    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Tencent/WeKnora&type=date&theme=dark&legend=top-left" />
    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Tencent/WeKnora&type=date&legend=top-left" />
